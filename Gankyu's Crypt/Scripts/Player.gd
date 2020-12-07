@@ -15,6 +15,9 @@ var movement_map = {
 var input_stack = []
 var speed = 80
 
+# boomerang
+var has_boomerang = true;
+
 # animation
 var direction = directions.DOWN
 var string_map = {
@@ -28,6 +31,9 @@ var string_map = {
 var animated_sprite
 var animation_player
 var sword_shape
+
+# resources
+var boomerang_scene = preload("res://Scenes/Boomerang.tscn")
 
 # new state is the state to change to
 # calls any processes for the end of a state or the begining of a state and
@@ -49,8 +55,9 @@ func set_state(new_state):
 		states.ATTACK:
 			set_animation("attack")
 		states.THROW:
-			# TODO: When boomerang is added change this
-			new_state = states.MOVE
+			has_boomerang = false
+			set_animation("throw")
+			
 	
 	# change state
 	state = new_state
@@ -87,7 +94,7 @@ func get_inputs():
 		if (Input.is_action_just_pressed("sword")):
 			set_state(states.ATTACK)
 		# Boomerang
-		if (Input.is_action_just_pressed("boomerang")):
+		if (Input.is_action_just_pressed("boomerang") && has_boomerang):
 			set_state(states.THROW)
 
 func set_animation(animation: String):
@@ -145,3 +152,11 @@ func activate_hitbox():
 		directions.LEFT:
 			sword_shape.shape.set_extents(Vector2(5, 10))
 			sword_shape.position = Vector2(-10, 2)
+
+# throw the boomerang
+func throw_boomerang():
+	var boomerang = boomerang_scene.instance()
+	get_tree().root.add_child(boomerang)
+	boomerang.player = self
+	boomerang.set_goal(movement_map[direction])
+	set_state(states.MOVE)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/shapes/boomerange_hitbox.tres" type="Shape2D" id=1]
+[ext_resource path="res://resources/sprite_frames/boomerang.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://resources/materials/Outline.tres" type="Material" id=3]
+[ext_resource path="res://Scripts/Boomerang.gd" type="Script" id=4]
+
+[node name="Boomerang" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 3 )
+frames = ExtResource( 2 )
+frame = 2
+playing = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = ExtResource( 1 )
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
