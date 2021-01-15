@@ -32,8 +32,21 @@ var animated_sprite
 var animation_player
 var sword_shape
 
+# Chests
+var chest = null
+
 # resources
 var boomerang_scene = preload("res://Scenes/Boomerang.tscn")
+
+# constants
+const max_health = 100
+const potion_potancy = 10
+
+# stats
+var keys = 0
+var health = 100
+var boss_key_1 = false
+var boss_key_2 = false
 
 # new state is the state to change to
 # calls any processes for the end of a state or the begining of a state and
@@ -92,7 +105,10 @@ func get_inputs():
 	if (state == states.MOVE):
 		# Attack
 		if (Input.is_action_just_pressed("sword")):
-			set_state(states.ATTACK)
+			if (chest != null and not chest.opened):
+				chest.open()
+			else:
+				set_state(states.ATTACK)
 		# Boomerang
 		if (Input.is_action_just_pressed("boomerang") && has_boomerang):
 			set_state(states.THROW)
@@ -160,3 +176,17 @@ func throw_boomerang():
 	boomerang.player = self
 	boomerang.set_goal(movement_map[direction])
 	set_state(states.MOVE)
+
+func recieve(var item):
+	match(item):
+		0: #KEY
+			keys += 1
+		1: #BOSS_KEY_1
+			boss_key_1 = true
+		2: #BOSS_KEY_2
+			boss_key_2 = true
+		3: #BOSS_KEY
+			boss_key_1 = true
+			boss_key_2 = true
+		4: #POTION
+			health += potion_potancy
