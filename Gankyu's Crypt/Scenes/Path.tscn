@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/spritesheets/moving_platforms.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Path.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 24 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 26 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 20, 4 )
+
+[node name="Path" type="Sprite" groups=[
+"Path",
+]]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 48, 48, 48 )
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 16, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -16, 0 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"valid_space",
+]]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="End" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+position = Vector2( 0, 28 )
+shape = SubResource( 3 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

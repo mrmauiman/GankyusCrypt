@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/spritesheets/moving_platforms.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/WaterPath.tscn" type="PackedScene" id=2]
+
+[node name="TurnableWater" type="Sprite"]
+z_index = 1
+z_as_relative = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 0, 48, 48 )
+
+[node name="WaterPath" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 48 )
