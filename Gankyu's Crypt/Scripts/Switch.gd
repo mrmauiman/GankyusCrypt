@@ -8,6 +8,9 @@ export(float) var wait_time = 1.1
 export(Array, NodePath) var turnable_paths
 var turnables = []
 
+export(PackedScene) var PlayerZone = preload("res://Scenes/PlayerZone.tscn")
+var zones = []
+
 export(NodePath) var camera_path
 var camera
 
@@ -18,7 +21,12 @@ var threshold = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for path in turnable_paths:
-		turnables.append(get_node(path))
+		var node = get_node(path)
+		turnables.append(node)
+		var zone = PlayerZone.instance()
+		zone.position = to_local(node.global_position)
+		add_child(zone)
+		zones.append(zone)
 	camera = get_node(camera_path)
 
 
@@ -53,8 +61,13 @@ func _on_Timer_timeout():
 		camera.set_offset(Vector2.ZERO, true)
 		camera.zoomin()
 
+func player_in_zone():
+	for zone in zones:
+		if zone.inside:
+			return true
+	return false
 
 func _on_CollisionBox_area_entered(area):
 	if (area.is_in_group("hit_box")):
-		if (not active):
+		if (not active and not player_in_zone()):
 			activate()

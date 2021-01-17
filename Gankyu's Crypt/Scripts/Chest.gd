@@ -3,7 +3,7 @@ extends Sprite
 export(NodePath) var player_path
 var player
 
-enum Items {KEY, BOSS_KEY_1, BOSS_KEY_2, BOSS_KEY, POTION}
+enum Items {KEY, BOSS_KEY_1, BOSS_KEY_2, BOSS_KEY, POTION, BOOMERANG}
 export(Items) var contents
 
 var opened = false

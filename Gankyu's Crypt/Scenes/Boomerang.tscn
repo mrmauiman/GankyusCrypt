@@ -6,14 +6,18 @@
 [ext_resource path="res://Scripts/Boomerang.gd" type="Script" id=4]
 
 [node name="Boomerang" type="Node2D"]
+z_index = 20
+z_as_relative = false
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 3 )
 frames = ExtResource( 2 )
+frame = 3
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="." groups=[
+"boomerang",
 "hit_box",
 ]]
 

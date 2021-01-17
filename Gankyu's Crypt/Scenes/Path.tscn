@@ -21,6 +21,8 @@ region_rect = Rect2( 96, 48, 48, 48 )
 script = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 16, 0 )
@@ -40,6 +42,8 @@ collision_mask = 6
 shape = SubResource( 2 )
 
 [node name="End" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
 position = Vector2( 0, 28 )

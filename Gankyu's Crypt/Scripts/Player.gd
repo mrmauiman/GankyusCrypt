@@ -190,3 +190,5 @@ func recieve(var item):
 			boss_key_2 = true
 		4: #POTION
 			health += potion_potancy
+		5: #BOOMERANG
+			has_boomerang = true

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/spritesheets/moving_platforms.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/DropOff.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 144, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 144, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 144, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 4 )
+
+[node name="DropOff" type="AnimatedSprite"]
+visible = false
+position = Vector2( 0, 48 )
+frames = SubResource( 4 )
+frame = 2
+playing = true
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"dropoff",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -20 )
+shape = SubResource( 5 )
+disabled = true

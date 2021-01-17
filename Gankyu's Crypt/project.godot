@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Gankyu's Crypt"
 run/main_scene="res://Scenes/TestRoom.tscn"
 
+[autoload]
+
+GlobalVariables="*res://Scripts/global_variables.gd"
+
 [display]
 
 window/size/width=432
@@ -78,4 +82,6 @@ boomerang={
 
 [rendering]
 
+quality/2d/use_nvidia_rect_flicker_workaround=true
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
