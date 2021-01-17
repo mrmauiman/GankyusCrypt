@@ -8,7 +8,7 @@ extents = Vector2( 24, 8 )
 
 [node name="TriggerBlock" type="Sprite"]
 texture = ExtResource( 2 )
-vframes = 3
+vframes = 4
 frame = 1
 script = ExtResource( 1 )
 

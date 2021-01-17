@@ -16,7 +16,7 @@ var input_stack = []
 var speed = 80
 
 # boomerang
-var has_boomerang = true;
+var has_boomerang = false;
 
 # animation
 var direction = directions.DOWN
@@ -130,6 +130,8 @@ func move_player():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if (GlobalVariables.DEBUG_MODE):
+		has_boomerang = true
 	animated_sprite = get_node("AnimatedSprite")
 	animation_player = get_node("AnimationPlayer")
 	sword_shape = get_node("SwordHitbox/CollisionShape2D")

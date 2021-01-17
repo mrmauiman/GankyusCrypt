@@ -11,7 +11,7 @@ extents = Vector2( 26.0362, 8 )
 
 [node name="KeyBlock" type="Sprite"]
 texture = ExtResource( 1 )
-vframes = 3
+vframes = 4
 region_rect = Rect2( 0, 0, 48, 16 )
 script = ExtResource( 2 )
 
