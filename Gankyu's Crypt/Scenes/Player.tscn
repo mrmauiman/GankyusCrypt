@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/shapes/player_collider_shape.tres" type="Shape2D" id=1]
 [ext_resource path="res://resources/sprite_frames/player.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://resources/shapes/player_hurtbox.tres" type="Shape2D" id=4]
 [ext_resource path="res://resources/materials/Outline.tres" type="Material" id=5]
+[ext_resource path="res://Scripts/HitBox.gd" type="Script" id=6]
 
-[sub_resource type="Animation" id=1]
-resource_name = "attack"
+[sub_resource type="Animation" id=2]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -38,7 +38,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -51,8 +51,7 @@ tracks/0/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "throw"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -68,7 +67,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -81,7 +80,7 @@ tracks/0/keys = {
 "values": [  ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 10 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -106,12 +105,14 @@ shape = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 method_call_mode = 1
-anims/attack = SubResource( 1 )
-anims/idle = SubResource( 2 )
-anims/throw = SubResource( 3 )
-anims/walk = SubResource( 4 )
+anims/attack = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/throw = SubResource( 4 )
+anims/walk = SubResource( 5 )
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." groups=[
+"hurtbox",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( 0, 1 )
@@ -120,8 +121,10 @@ shape = ExtResource( 4 )
 [node name="SwordHitbox" type="Area2D" parent="." groups=[
 "hit_box",
 ]]
+script = ExtResource( 6 )
+knockback = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
 position = Vector2( -10, 2 )
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 disabled = true
