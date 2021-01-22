@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Volley.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/HitBox.gd" type="Script" id=2]
+[ext_resource path="res://assets/spritesheets/Gankyu.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 800, 128, 100, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 900, 128, 100, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 1000, 128, 100, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 1100, 128, 100, 64 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 24.0
+} ]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 7.5491
+
+[node name="Volley" type="Node2D"]
+position = Vector2( 93, 52.5 )
+script = ExtResource( 1 )
+velocity = Vector2( 0, 80 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="HitBox" type="Area2D" parent="." groups=[
+"enemy_hitbox",
+"projectile",
+"stunner",
+]]
+script = ExtResource( 2 )
+damage = 10
+knockback = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2( -4, 1 )
+shape = SubResource( 6 )
+[connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

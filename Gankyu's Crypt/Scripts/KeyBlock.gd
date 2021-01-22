@@ -16,6 +16,7 @@ func _on_Area2D_body_entered(body):
 			types.KEY:
 				if (body.keys > 0):
 					body.keys -= 1
+					body.GUI.UseKey()
 					queue_free()
 			types.BOSSKEY:
 				if (body.boss_key_1 && body.boss_key_2):
