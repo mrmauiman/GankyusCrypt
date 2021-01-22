@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/GUI.gd" type="Script" id=1]
+[ext_resource path="res://assets/GUIElements/Item_Selector.png" type="Texture" id=2]
+[ext_resource path="res://assets/GUIElements/Health_Bar_BG.png" type="Texture" id=3]
+[ext_resource path="res://assets/GUIElements/Health_Bar_Progress.png" type="Texture" id=4]
+[ext_resource path="res://assets/GUIElements/BoomerangIcon.png" type="Texture" id=5]
+[ext_resource path="res://assets/GUIElements/BossKey1Icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/GUIElements/KeyIcon.png" type="Texture" id=7]
+[ext_resource path="res://assets/GUIElements/BossKey2Icon.png" type="Texture" id=8]
+[ext_resource path="res://assets/GUIElements/BossKeyIcon.png" type="Texture" id=9]
+
+[node name="GUI" type="MarginContainer"]
+anchor_right = 1.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+KeyIcon = ExtResource( 7 )
+BoomerangIcon = ExtResource( 5 )
+BossKey = ExtResource( 9 )
+BossKey1 = ExtResource( 6 )
+BossKey2 = ExtResource( 8 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 428.0
+margin_bottom = 24.0
+
+[node name="HealthContainer" type="MarginContainer" parent="HBoxContainer"]
+margin_right = 392.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="Health" type="TextureProgress" parent="HBoxContainer/HealthContainer"]
+margin_right = 392.0
+margin_bottom = 20.0
+value = 97.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 396.0
+margin_right = 424.0
+margin_bottom = 20.0
+
+[node name="Keys" type="HBoxContainer" parent="HBoxContainer/HBoxContainer"]
+margin_bottom = 20.0
+
+[node name="BossKey" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 20.0
+
+[node name="ItemFrame" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+margin_left = 8.0
+margin_right = 28.0
+margin_bottom = 20.0
+texture = ExtResource( 2 )
+
+[node name="CurrentItem" type="TextureRect" parent="HBoxContainer/HBoxContainer/ItemFrame"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

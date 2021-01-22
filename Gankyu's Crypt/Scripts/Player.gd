@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export(PackedScene) var GameOver
+
 # states
 enum states {MOVE, ATTACK, THROW}
 var state = states.MOVE
@@ -31,6 +33,9 @@ var string_map = {
 var animated_sprite
 var animation_player
 var sword_shape
+export(NodePath) var GUI_path
+var GUI
+
 
 # Chests
 var chest = null
@@ -40,7 +45,7 @@ var boomerang_scene = preload("res://Scenes/Boomerang.tscn")
 
 # constants
 const max_health = 100
-const potion_potancy = 10
+const potion_potancy = 20
 
 # stats
 var keys = 0
@@ -78,25 +83,25 @@ func set_state(new_state):
 # Checks the inputs and updates their corresponding variables
 func get_inputs():
 	# Down
-	if (Input.is_action_just_pressed("down")):
+	if (Input.is_action_just_pressed("down") and not directions.DOWN in input_stack):
 		input_stack.push_back(directions.DOWN)
 	if (Input.is_action_just_released("down")):
 		input_stack.erase(directions.DOWN)
 	
 	# Up
-	if (Input.is_action_just_pressed("up")):
+	if (Input.is_action_just_pressed("up") and not directions.UP in input_stack):
 		input_stack.push_back(directions.UP)
 	if (Input.is_action_just_released("up")):
 		input_stack.erase(directions.UP)
 	
 	# Right
-	if (Input.is_action_just_pressed("right")):
+	if (Input.is_action_just_pressed("right") and not directions.RIGHT in input_stack):
 		input_stack.push_back(directions.RIGHT)
 	if (Input.is_action_just_released("right")):
 		input_stack.erase(directions.RIGHT)
 	
 	# Left
-	if (Input.is_action_just_pressed("left")):
+	if (Input.is_action_just_pressed("left") and not directions.LEFT in input_stack):
 		input_stack.push_back(directions.LEFT)
 	if (Input.is_action_just_released("left")):
 		input_stack.erase(directions.LEFT)
@@ -136,6 +141,8 @@ func _ready():
 	animation_player = get_node("AnimationPlayer")
 	sword_shape = get_node("SwordHitbox/CollisionShape2D")
 	set_animation("idle")
+	GUI = get_node(GUI_path)
+	GUI.SetHealth(health/max_health)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -183,14 +190,43 @@ func recieve(var item):
 	match(item):
 		0: #KEY
 			keys += 1
+			GUI.GetKey()
 		1: #BOSS_KEY_1
 			boss_key_1 = true
+			GUI.GetBossKey1()
 		2: #BOSS_KEY_2
 			boss_key_2 = true
+			GUI.GetBossKey2()
 		3: #BOSS_KEY
 			boss_key_1 = true
 			boss_key_2 = true
+			GUI.GetBossKey()
 		4: #POTION
 			health += potion_potancy
+			GUI.SetHealth(float(health)/max_health)
 		5: #BOOMERANG
 			has_boomerang = true
+			GUI.GetBoomerang()
+
+func take_damage(amount):
+	health -= amount
+	var percentage = float(health)/max_health
+	GUI.SetHealth(percentage)
+	if health <= 0:
+		animated_sprite.play("death")
+		$Hurtbox/CollisionShape2D.set_deferred("disabled", true)
+		$CollisionShape2D.set_deferred("disabled", true)
+		state = null
+		get_tree().get_root().get_node("TestRoom/CanvasLayer").add_child(GameOver.instance())
+
+func take_knockback(amount):
+	var vec = movement_map[direction] * -amount
+	if (not test_move(transform, vec)):
+		position += vec
+
+func _on_Hurtbox_area_entered(area):
+	if area.is_in_group("enemy_hitbox"):
+		take_damage(area.damage)
+		take_knockback(area.knockback)
+		if area.is_in_group("projectile"):
+			area.get_parent().queue_free()

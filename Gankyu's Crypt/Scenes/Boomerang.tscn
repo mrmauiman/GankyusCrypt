@@ -14,11 +14,13 @@ script = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 3 )
 frames = ExtResource( 2 )
+frame = 2
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="." groups=[
 "boomerang",
 "hit_box",
+"stunner",
 ]]
 script = ExtResource( 5 )
 damage = 1
