@@ -15,18 +15,19 @@ func _ready():
 
 func open():
 	$Timer.start(0.5)
-	camera_parent = camera.get_parent()
-	camera_parent.remove_child(camera)
-	camera.position = to_local(camera_parent.global_position)
-	add_child(camera)
-	camera.position = Vector2.ZERO
+	# TODO: Make camera not make vomit
+#	camera_parent = camera.get_parent()
+#	camera_parent.remove_child(camera)
+#	camera.position = to_local(camera_parent.global_position)
+#	add_child(camera)
+#	camera.position = Vector2.ZERO 
 	visible = false
 	print("done")
 
 
 func _on_Timer_timeout():
-	remove_child(camera)
-	camera.position = camera_parent.to_local(global_position)
-	camera_parent.add_child(camera)
-	camera.position = Vector2.ZERO
+#	remove_child(camera)
+#	camera.position = camera_parent.to_local(global_position)
+#	camera_parent.add_child(camera)
+#	camera.position = Vector2.ZERO
 	queue_free()
