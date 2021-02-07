@@ -48,7 +48,7 @@ func activate():
 		else:
 			camera_offset += turnable.global_position
 	
-	camera.zoomout()
+	#camera.zoomout()
 	camera_offset = camera_offset/len(turnables)
 	camera.set_offset(camera_offset)
 	$Timer.start(time * wait_time)
@@ -59,7 +59,7 @@ func _on_Timer_timeout():
 		$Sprite.frame -= 1
 		active = false
 		camera.set_offset(Vector2.ZERO, true)
-		camera.zoomin()
+		#camera.zoomin()
 
 func player_in_zone():
 	for zone in zones:

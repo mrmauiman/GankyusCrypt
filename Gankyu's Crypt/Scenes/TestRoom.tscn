@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/tilemaps/tilemap.tres" type="TileSet" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Scenes/SkeletonWarrior.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/RoomSpawner.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/Gankyu.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/CameraConstraint.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 40 )
@@ -54,6 +55,69 @@ extents = Vector2( 56, 8 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 40, 8 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 216, 88 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 216, 56 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 96, 144 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 216, 120 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 8, 24 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 216, 120 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 120, 120 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 120, 312 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 168, 120 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 120, 120 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 112, 104 )
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 264, 112 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 216, 128 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 184, 120 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 56, 264 )
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 216, 120 )
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 216, 120 )
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 216, 136 )
+
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 56, 192 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 184, 56 )
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 152, 120 )
 
 [node name="TestRoom" type="Node"]
 script = ExtResource( 9 )
@@ -327,11 +391,16 @@ type = 2
 start_direction = 180
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 216, 200 )
+position = Vector2( 216, 192 )
 GUI_path = NodePath("../CanvasLayer/GUI")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+limit_left = -10000
+limit_top = -10000
+limit_right = 10000
+limit_bottom = 10000
+limit_smoothed = true
 smoothing_enabled = true
 smoothing_speed = 10.0
 script = ExtResource( 8 )
@@ -636,3 +705,291 @@ contents = 4
 
 [node name="Gankyu" parent="." instance=ExtResource( 21 )]
 position = Vector2( 2360, -624 )
+
+[node name="CameraConstraints" type="Node2D" parent="."]
+
+[node name="CameraConstraint" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": 240,
+"left": -16,
+"right": 448,
+"top": 0
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint"]
+position = Vector2( 216, 152 )
+shape = SubResource( 12 )
+
+[node name="CameraConstraint2" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": 240,
+"left": 432,
+"right": 880,
+"top": 0
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint2"]
+position = Vector2( 664, 120 )
+shape = SubResource( 13 )
+
+[node name="CameraConstraint3" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": 240,
+"left": -272,
+"right": 160,
+"top": -128
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint3"]
+position = Vector2( -112, 32 )
+shape = SubResource( 14 )
+
+[node name="CameraConstraint4" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -112,
+"left": -272,
+"right": 176,
+"top": -384
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint4"]
+position = Vector2( -56, -248 )
+shape = SubResource( 15 )
+
+[node name="CameraConstraint5" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -64,
+"left": -272,
+"right": 176,
+"top": -384
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint5"]
+position = Vector2( 72, -104 )
+shape = SubResource( 16 )
+
+[node name="CameraConstraint6" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -128,
+"left": 160,
+"right": 624,
+"top": -368
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint6"]
+position = Vector2( 392, -248 )
+shape = SubResource( 17 )
+
+[node name="CameraConstraint7" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -128,
+"left": 528,
+"right": 960,
+"top": -384
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint7"]
+position = Vector2( 744, -248 )
+shape = SubResource( 18 )
+
+[node name="CameraConstraint8" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -368,
+"left": 528,
+"right": 960,
+"top": -1008
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint8"]
+position = Vector2( 744, -696 )
+shape = SubResource( 19 )
+
+[node name="CameraConstraint9" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -368,
+"left": -272,
+"right": 160,
+"top": -640
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint9"]
+position = Vector2( -104, -504 )
+shape = SubResource( 20 )
+
+[node name="CameraConstraint10" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -624,
+"left": -176,
+"right": 256,
+"top": -880
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint10"]
+position = Vector2( 40, -760 )
+shape = SubResource( 21 )
+
+[node name="CameraConstraint11" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -384,
+"left": 64,
+"right": 496,
+"top": -880
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint11"]
+position = Vector2( 288, -728 )
+shape = SubResource( 22 )
+
+[node name="CameraConstraint12" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -384,
+"left": 80,
+"right": 608,
+"top": -624
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint12"]
+position = Vector2( 344, -496 )
+shape = SubResource( 23 )
+
+[node name="CameraConstraint13" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": 240,
+"left": 1712,
+"right": 2176,
+"top": -16
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint13"]
+position = Vector2( 1944, 112 )
+shape = SubResource( 24 )
+
+[node name="CameraConstraint14" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": 240,
+"left": 2160,
+"right": 2544,
+"top": 0
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint14"]
+position = Vector2( 2360, 120 )
+shape = SubResource( 25 )
+
+[node name="CameraConstraint15" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": 240,
+"left": 1440,
+"right": 1872,
+"top": -304
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint15"]
+position = Vector2( 1656, -24 )
+shape = SubResource( 26 )
+
+[node name="CameraConstraint16" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -48,
+"left": 1712,
+"right": 2160,
+"top": -288
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint16"]
+position = Vector2( 1944, -168 )
+shape = SubResource( 27 )
+
+[node name="CameraConstraint17" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -288,
+"left": 1600,
+"right": 2032,
+"top": -560
+}
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint17"]
+position = Vector2( 1816, -424 )
+shape = SubResource( 28 )
+
+[node name="CameraConstraint18" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -544,
+"left": 1600,
+"right": 2048,
+"top": -832
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint18"]
+position = Vector2( 1816, -696 )
+shape = SubResource( 29 )
+
+[node name="CameraConstraint19" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -304,
+"left": 2032,
+"right": 2416,
+"top": -800
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint19"]
+position = Vector2( 2104, -608 )
+shape = SubResource( 30 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint19"]
+position = Vector2( 2232, -360 )
+shape = SubResource( 31 )
+
+[node name="CameraConstraint20" parent="CameraConstraints" instance=ExtResource( 22 )]
+camera_path = NodePath("../../Player/Camera2D")
+constraints = {
+"bottom": -432,
+"left": 2144,
+"right": 2576,
+"top": -672
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraConstraints/CameraConstraint20"]
+position = Vector2( 2360, -552 )
+shape = SubResource( 32 )
+
+[node name="SpawnLocations" type="Node2D" parent="."]
+
+[node name="SpawnLocation1" type="Node2D" parent="SpawnLocations" groups=[
+"BossSpawnLocation",
+]]
+position = Vector2( 2256, -512 )
+
+[node name="SpawnLocation2" type="Node2D" parent="SpawnLocations" groups=[
+"BossSpawnLocation",
+]]
+position = Vector2( 2464, -512 )
+
+[node name="SpawnLocation3" type="Node2D" parent="SpawnLocations" groups=[
+"BossSpawnLocation",
+]]
+position = Vector2( 2464, -592 )
+
+[node name="SpawnLocation4" type="Node2D" parent="SpawnLocations" groups=[
+"BossSpawnLocation",
+]]
+position = Vector2( 2256, -592 )

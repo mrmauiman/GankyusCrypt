@@ -3,6 +3,9 @@ extends KinematicBody2D
 onready var sprite = get_node("AnimatedSprite")
 onready var timer = get_node("Timer")
 
+enum enemy_types {SKELETON_WARRIOR}
+
+export(Array, PackedScene) var enemies
 export(Array, PackedScene) var projectiles
 export(Vector2) var projectile_spawn_position
 export(float) var down_time = 8
@@ -30,9 +33,12 @@ var get_up = false
 var down = false
 var fired = false
 
+var spawn_points = []
+
 func _ready():
 	sprite.play("fly")
 	rng.randomize()
+	spawn_points = get_tree().get_nodes_in_group("BossSpawnLocation")
 
 func _process(delta):
 	if sprite.animation == "fly":
@@ -68,12 +74,33 @@ func _process(delta):
 			projectile.position = to_global(projectile_spawn_position)
 
 func _physics_process(delta):
+	if GlobalVariables.paused:
+		sprite.playing = false
+		return
+	elif not sprite.playing:
+		sprite.playing = true
 	if sprite.animation == "fly":
 		x_goal = player.global_position.x
 		var diff = global_position.x - x_goal
 		if abs(diff) > threshold:
 			velocity = sign(diff) * Vector2.LEFT * speed * (abs(diff)/max_dist_speed)
 			move_and_slide(velocity)
+
+func spawn_enemies():
+	if health > 50:
+		var enemy = enemies[enemy_types.SKELETON_WARRIOR].instance()
+		enemy.global_position = spawn_points[0].global_position
+		get_tree().get_root().call_deferred("add_child", enemy)
+	elif health > 25:
+		for i in range(2):
+			var enemy = enemies[enemy_types.SKELETON_WARRIOR].instance()
+			enemy.global_position = spawn_points[i].global_position
+			get_tree().get_root().call_deferred("add_child", enemy)
+	elif health > 0:
+		for i in range(4):
+			var enemy = enemies[enemy_types.SKELETON_WARRIOR].instance()
+			enemy.global_position = spawn_points[i].global_position
+			get_tree().get_root().call_deferred("add_child", enemy)
 
 func shoot_projectile():
 	sprite.play("blink")
@@ -124,6 +151,7 @@ func _on_AnimatedSprite_animation_finished():
 		$StunPoint/CollisionPolygon2D.set_deferred("disabled", false)
 		$AttackBox/CollisionShape2D.set_deferred("disabled", false)
 		sprite.play("fly")
+		spawn_enemies()
 	
 	if sprite.animation == "blink":
 		sprite.play("fly")

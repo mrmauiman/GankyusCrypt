@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Gankyu's Crypt"
-run/main_scene="res://Scenes/TestRoom.tscn"
+run/main_scene="res://Scenes/Menu.tscn"
 
 [autoload]
 
@@ -84,4 +84,5 @@ boomerang={
 
 quality/2d/use_nvidia_rect_flicker_workaround=true
 quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.168627, 0.168627, 0.168627, 1 )
 environment/default_environment="res://default_env.tres"

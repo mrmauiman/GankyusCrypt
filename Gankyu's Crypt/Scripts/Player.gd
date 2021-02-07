@@ -149,6 +149,8 @@ func _process(delta):
 	get_inputs()
 
 func _physics_process(delta):
+	if GlobalVariables.paused:
+		return
 	match(state):
 		states.MOVE:
 			move_player()
@@ -222,6 +224,13 @@ func take_damage(amount):
 func take_knockback(amount):
 	var vec = movement_map[direction] * -amount
 	if (not test_move(transform, vec)):
+		position += vec
+	else:
+		while (test_move(transform, vec)):
+			vec -= vec.normalized()
+			if (test_move(transform, Vector2.ZERO)):
+				vec = Vector2.ZERO
+				break
 		position += vec
 
 func _on_Hurtbox_area_entered(area):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://assets/spritesheets/Game_Over.png" type="Texture" id=2]
@@ -60,31 +60,37 @@ tracks/3/keys = {
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 48, 48 )
+region = Rect2( 0, 0, 52, 52 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 52, 0, 52, 52 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 104, 0, 52, 52 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 48, 48, 48 )
+region = Rect2( 0, 52, 52, 52 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
-region = Rect2( 48, 48, 48, 48 )
+region = Rect2( 52, 52, 52, 52 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
-region = Rect2( 96, 48, 48, 48 )
+region = Rect2( 104, 52, 52, 52 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 96, 48, 48 )
+region = Rect2( 0, 104, 52, 52 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
 
 [sub_resource type="DynamicFont" id=9]
 outline_color = Color( 0, 1, 0.905882, 1 )
@@ -112,7 +118,7 @@ margin_bottom = 240.0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_right = 432.0
-margin_bottom = 56.0
+margin_bottom = 60.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
@@ -122,75 +128,87 @@ custom_constants/margin_bottom = 4
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 428.0
-margin_bottom = 52.0
+margin_bottom = 56.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/CenterContainer"]
-margin_left = 6.0
-margin_right = 418.0
-margin_bottom = 48.0
+margin_left = 3.0
+margin_right = 421.0
+margin_bottom = 52.0
+custom_constants/separation = 14
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
-margin_right = 48.0
-margin_bottom = 48.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
+margin_right = 202.0
+margin_bottom = 52.0
+custom_constants/separation = -2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/HBoxContainer"]
+margin_right = 52.0
+margin_bottom = 52.0
 texture = SubResource( 2 )
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
-margin_left = 52.0
-margin_right = 100.0
-margin_bottom = 48.0
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/HBoxContainer"]
+margin_left = 50.0
+margin_right = 102.0
+margin_bottom = 52.0
 texture = SubResource( 3 )
 
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
-margin_left = 104.0
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/HBoxContainer"]
+margin_left = 100.0
 margin_right = 152.0
-margin_bottom = 48.0
+margin_bottom = 52.0
 texture = SubResource( 4 )
 
-[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
-margin_left = 156.0
-margin_right = 204.0
-margin_bottom = 48.0
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/HBoxContainer"]
+margin_left = 150.0
+margin_right = 202.0
+margin_bottom = 52.0
 texture = SubResource( 5 )
 
-[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
-margin_left = 208.0
-margin_right = 256.0
-margin_bottom = 48.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
+margin_left = 216.0
+margin_right = 418.0
+margin_bottom = 52.0
+custom_constants/separation = -2
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_right = 52.0
+margin_bottom = 52.0
 texture = SubResource( 6 )
 
-[node name="TextureRect6" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
-margin_left = 260.0
-margin_right = 308.0
-margin_bottom = 48.0
+[node name="TextureRect6" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_left = 50.0
+margin_right = 102.0
+margin_bottom = 52.0
 texture = SubResource( 7 )
 
-[node name="TextureRect7" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
-margin_left = 312.0
-margin_right = 360.0
-margin_bottom = 48.0
+[node name="TextureRect7" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_left = 100.0
+margin_right = 152.0
+margin_bottom = 52.0
 texture = SubResource( 5 )
 
-[node name="TextureRect8" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
-margin_left = 364.0
-margin_right = 412.0
-margin_bottom = 48.0
+[node name="TextureRect8" type="TextureRect" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_left = 150.0
+margin_right = 202.0
+margin_bottom = 52.0
 texture = SubResource( 8 )
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 60.0
+margin_top = 64.0
 margin_right = 432.0
 margin_bottom = 240.0
 size_flags_vertical = 3
 
 [node name="Button" type="Button" parent="VBoxContainer/CenterContainer"]
-margin_left = 183.0
-margin_top = 79.0
-margin_right = 249.0
-margin_bottom = 101.0
+margin_left = 193.0
+margin_top = 77.0
+margin_right = 239.0
+margin_bottom = 99.0
+custom_styles/focus = SubResource( 10 )
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color = Color( 0.811765, 0.811765, 0.811765, 1 )
+custom_colors/font_color = Color( 0.741176, 0.741176, 0.741176, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-text = "Restart"
+text = "Menu"
 flat = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]

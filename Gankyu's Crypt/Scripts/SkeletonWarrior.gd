@@ -28,6 +28,16 @@ func _ready():
 	._ready()
 	change_direction()
 
+# Overload end spawning
+func end_spawning():
+	.end_spawning()
+	$AgroRange/CollisionShape2D.set_deferred("disabled", false)
+
+# Overload start spawning
+func start_spawning():
+	.start_spawning()
+	$AgroRange/CollisionShape2D.set_deferred("disabled", true)
+
 func change_direction(dir = null):
 	.change_direction(dir)
 	$AnimatedSprite/HitBox.position = hit_box_coords[direction]
@@ -119,6 +129,8 @@ func _on_AgroRange_body_exited(body):
 
 func _on_HurtBox_area_entered(area):
 	if area.is_in_group("hit_box"):
+		if area.is_in_group("boomerang"):
+			area.get_parent().return_to_player()
 		take_damage(area.damage)
 		knockback(area.knockback)
 		start_invincibility()

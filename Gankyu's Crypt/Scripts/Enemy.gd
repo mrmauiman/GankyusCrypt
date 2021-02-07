@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+onready var SpawnCloud = load("res://Scenes/SpawnCloud.tscn")
+
 enum directions {UP, LEFT, RIGHT, DOWN}
 var direction_vectors = {
 	directions.UP: Vector2.UP,
@@ -22,7 +24,7 @@ var direction_strings = {
 
 var direction = directions.DOWN
 
-enum states {ROAM, AGRO}
+enum states {SPAWNING, ROAM, AGRO}
 var state = null
 var invincibility_timer = 0
 
@@ -43,6 +45,13 @@ func knockback(amount):
 		var vec = direction_vectors[direction] * -amount
 		if (not test_move(transform, vec)):
 			position += vec
+		else:
+			while (test_move(transform, vec)):
+				vec -= vec.normalized()
+				if (test_move(transform, Vector2.ZERO)):
+					vec = Vector2.ZERO
+					break
+			position += vec
 
 func take_damage(amount):
 	if (invincibility_timer <= 0):
@@ -62,11 +71,17 @@ func change_direction(dir = null):
 	if (len(dirs) > 0):
 		direction = dirs[rng.randi_range(0, len(dirs)-1)]
 
+func end_spawning():
+	$AnimatedSprite.visible = true
+
 func end_roam():
 	pass
 
 func end_agro():
 	pass
+
+func start_spawning():
+	create_cloud()
 
 func start_roam():
 	pass
@@ -74,10 +89,19 @@ func start_roam():
 func start_agro():
 	pass
 
+func create_cloud():
+	var cloud = SpawnCloud.instance()
+	cloud.roam = states.ROAM
+	call_deferred("add_child", cloud)
+	cloud.position = Vector2.ZERO
+	$AnimatedSprite.visible = false
+
 # changes state to new_state and runs code for beginnning and end of a state
 func set_state(var new_state: int) -> void:
 	# End of State
 	match(state):
+		states.SPAWNING:
+			end_spawning()
 		states.ROAM:
 			end_roam()
 		states.AGRO:
@@ -85,6 +109,8 @@ func set_state(var new_state: int) -> void:
 	state = new_state
 	# Beginning of State
 	match(state):
+		states.SPAWNING:
+			start_spawning()
 		states.ROAM:
 			start_roam()
 		states.AGRO:
@@ -100,7 +126,7 @@ func agro(delta):
 
 # Occurs on creation
 func _ready():
-	set_state(states.ROAM)
+	set_state(states.SPAWNING)
 	rng.randomize()
 	for i in range(4):
 		var ray = RayCast2D.new()
@@ -110,6 +136,8 @@ func _ready():
 
 # happens every physics frame
 func _physics_process(delta):
+	if GlobalVariables.paused:
+		return
 	invincibility_timer -= delta
 	
 	# Only run code for the current state

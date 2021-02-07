@@ -56,11 +56,11 @@ func open_blocks():
 
 func spawn():
 	for i in range(len(enemies)):
-		add_child(enemies[i])
+		call_deferred("add_child", enemies[i])
 		enemies[i].transform = enemy_transforms[i]
 	
 	for i in range(len(blocks)):
-		add_child(blocks[i])
+		call_deferred("add_child", blocks[i])
 		blocks[i].transform = block_transforms[i]
 	
 	get_node("CollisionShape2D").set_deferred("disabled", true)
