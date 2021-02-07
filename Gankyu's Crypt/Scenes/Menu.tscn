@@ -618,45 +618,45 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=156]
+[sub_resource type="DynamicFont" id=147]
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=157]
+[sub_resource type="DynamicFont" id=148]
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=158]
+[sub_resource type="DynamicFont" id=149]
 font_data = ExtResource( 9 )
-
-[sub_resource type="AtlasTexture" id=148]
-atlas = ExtResource( 10 )
-region = Rect2( 12, 0, 12, 12 )
-
-[sub_resource type="AtlasTexture" id=149]
-atlas = ExtResource( 10 )
-region = Rect2( 24, 0, 12, 12 )
 
 [sub_resource type="AtlasTexture" id=150]
 atlas = ExtResource( 10 )
-region = Rect2( 36, 0, 12, 12 )
+region = Rect2( 12, 0, 12, 12 )
 
-[sub_resource type="DynamicFont" id=151]
-outline_size = 1
-font_data = ExtResource( 9 )
+[sub_resource type="AtlasTexture" id=151]
+atlas = ExtResource( 10 )
+region = Rect2( 24, 0, 12, 12 )
 
 [sub_resource type="AtlasTexture" id=152]
 atlas = ExtResource( 10 )
+region = Rect2( 36, 0, 12, 12 )
+
+[sub_resource type="DynamicFont" id=153]
+outline_size = 1
+font_data = ExtResource( 9 )
+
+[sub_resource type="AtlasTexture" id=154]
+atlas = ExtResource( 10 )
 region = Rect2( 48, 0, 12, 12 )
 
-[sub_resource type="AtlasTexture" id=153]
+[sub_resource type="AtlasTexture" id=155]
 atlas = ExtResource( 10 )
 region = Rect2( 60, 0, 12, 12 )
 
-[sub_resource type="DynamicFont" id=154]
+[sub_resource type="DynamicFont" id=156]
 size = 36
 outline_size = 1
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=155]
+[sub_resource type="DynamicFont" id=157]
 size = 12
 font_data = ExtResource( 9 )
 
@@ -679,7 +679,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 312, 88 )
 frames = SubResource( 146 )
-frame = 38
+frame = 35
 playing = true
 
 [node name="Play" type="Button" parent="."]
@@ -692,7 +692,7 @@ margin_top = 24.0
 margin_right = 166.0
 margin_bottom = 46.0
 custom_styles/focus = ExtResource( 13 )
-custom_fonts/font = SubResource( 156 )
+custom_fonts/font = SubResource( 147 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 custom_colors/font_color_hover = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Begin Adventure"
@@ -712,7 +712,7 @@ margin_top = 50.0
 margin_right = 166.0
 margin_bottom = 72.0
 custom_styles/focus = ExtResource( 13 )
-custom_fonts/font = SubResource( 157 )
+custom_fonts/font = SubResource( 148 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 custom_colors/font_color_hover = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Options"
@@ -732,7 +732,7 @@ margin_top = 75.0
 margin_right = 166.0
 margin_bottom = 97.0
 custom_styles/focus = ExtResource( 13 )
-custom_fonts/font = SubResource( 158 )
+custom_fonts/font = SubResource( 149 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 custom_colors/font_color_hover = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Quit"
@@ -754,28 +754,28 @@ margin_left = 73.0
 margin_top = 179.0
 margin_right = 85.0
 margin_bottom = 191.0
-texture = SubResource( 148 )
+texture = SubResource( 150 )
 
 [node name="Up" type="TextureRect" parent="."]
 margin_left = 60.0
 margin_top = 166.0
 margin_right = 72.0
 margin_bottom = 178.0
-texture = SubResource( 149 )
+texture = SubResource( 151 )
 
 [node name="Down" type="TextureRect" parent="."]
 margin_left = 60.0
 margin_top = 179.0
 margin_right = 72.0
 margin_bottom = 191.0
-texture = SubResource( 150 )
+texture = SubResource( 152 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 47.6071
 margin_top = 190.528
 margin_right = 87.6071
 margin_bottom = 206.528
-custom_fonts/font = SubResource( 151 )
+custom_fonts/font = SubResource( 153 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Move"
 
@@ -784,7 +784,7 @@ margin_left = 117.0
 margin_top = 179.0
 margin_right = 129.0
 margin_bottom = 191.0
-texture = SubResource( 152 )
+texture = SubResource( 154 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -794,7 +794,7 @@ margin_left = 99.2295
 margin_top = 191.825
 margin_right = 145.23
 margin_bottom = 207.825
-custom_fonts/font = SubResource( 151 )
+custom_fonts/font = SubResource( 153 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Attack"
 
@@ -803,7 +803,7 @@ margin_left = 170.0
 margin_top = 179.0
 margin_right = 182.0
 margin_bottom = 191.0
-texture = SubResource( 153 )
+texture = SubResource( 155 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -813,7 +813,7 @@ margin_left = 160.622
 margin_top = 192.0
 margin_right = 206.622
 margin_bottom = 208.0
-custom_fonts/font = SubResource( 151 )
+custom_fonts/font = SubResource( 153 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Item"
 
@@ -829,7 +829,7 @@ margin_left = 46.25
 margin_top = 37.0
 margin_right = 191.25
 margin_bottom = 79.0
-custom_fonts/font = SubResource( 154 )
+custom_fonts/font = SubResource( 156 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Gankyu's Crypt"
 __meta__ = {
@@ -841,7 +841,7 @@ margin_left = 45.0
 margin_top = 80.0
 margin_right = 191.0
 margin_bottom = 156.0
-custom_fonts/font = SubResource( 155 )
+custom_fonts/font = SubResource( 157 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "   Our hero Clara was tasked by the king, to conquer the monsters crypt and stop them from terrorizing the locals."
 autowrap = true
