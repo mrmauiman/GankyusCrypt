@@ -1,5 +1,9 @@
 extends Area2D
 
+export(NodePath) var music_path
+enum songs {MENU, DUNGEON, BOSS, WIN, NONE}
+export(songs) var new_song = songs.NONE
+
 var enemies = []
 var enemy_transforms = []
 var blocks = []
@@ -65,6 +69,10 @@ func spawn():
 	
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	spawned = true
+	
+	if new_song != songs.NONE:
+		var music_node = get_node(music_path)
+		music_node.play_song(new_song)
 
 
 func _on_RoomSpawner_body_entered(body):

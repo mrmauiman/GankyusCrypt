@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/tilemaps/tilemap.tres" type="TileSet" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Scenes/CameraConstraint.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Scenes/Slime.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/SkeletonArcher.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Scripts/MusicController.gd" type="Script" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 40 )
@@ -393,7 +394,7 @@ type = 2
 start_direction = 180
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 216, 192 )
+position = Vector2( 2360, -384 )
 GUI_path = NodePath("../CanvasLayer/GUI")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -707,12 +708,26 @@ position = Vector2( 2104, -728 )
 [node name="SkeletonArcher2" parent="Enemies/RoomSpawner12" instance=ExtResource( 24 )]
 position = Vector2( 2104, -360 )
 
+[node name="RoomSpawner13" parent="Enemies" instance=ExtResource( 20 )]
+music_path = NodePath("../../Music")
+new_song = 1
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Enemies/RoomSpawner13"]
+position = Vector2( 2360, -472 )
+polygon = PoolVector2Array( 16, 24, 24, 24, 24, 0, -24, 0, -24, 24, -16, 24, -16, 8, 16, 8 )
+
+[node name="TriggerBlock" parent="Enemies/RoomSpawner13" instance=ExtResource( 13 )]
+position = Vector2( 2360, -424 )
+rotation = 1.5708
+type = 1
+camera_path = NodePath("../../../Player/Camera2D")
+
+[node name="Gankyu" parent="Enemies/RoomSpawner13" instance=ExtResource( 21 )]
+position = Vector2( 2360, -624 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 5 )]
-
-[node name="Gankyu" parent="." instance=ExtResource( 21 )]
-position = Vector2( 2360, -624 )
 
 [node name="CameraConstraints" type="Node2D" parent="."]
 visible = false
@@ -1004,6 +1019,7 @@ position = Vector2( 2464, -592 )
 position = Vector2( 2256, -592 )
 
 [node name="RoomBlackouts" type="Node2D" parent="."]
+visible = false
 position = Vector2( 80, -624 )
 z_index = 30
 
@@ -1034,3 +1050,7 @@ color = Color( 0.168627, 0.168627, 0.168627, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 25 )
+default_song = 1
