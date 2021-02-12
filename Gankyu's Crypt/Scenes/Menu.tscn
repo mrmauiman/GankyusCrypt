@@ -1,12 +1,6 @@
-[gd_scene load_steps=173 format=2]
+[gd_scene load_steps=189 format=2]
 
-[ext_resource path="res://assets/GUIElements/book/6.png" type="Texture" id=1]
-[ext_resource path="res://assets/GUIElements/book/1.png" type="Texture" id=2]
-[ext_resource path="res://assets/GUIElements/book/7.png" type="Texture" id=3]
-[ext_resource path="res://assets/GUIElements/book/3.png" type="Texture" id=4]
-[ext_resource path="res://assets/GUIElements/book/2.png" type="Texture" id=5]
-[ext_resource path="res://assets/GUIElements/book/4.png" type="Texture" id=6]
-[ext_resource path="res://assets/GUIElements/book/5.png" type="Texture" id=7]
+[ext_resource path="res://assets/GUIElements/Pause_Menu.png" type="Texture" id=1]
 [ext_resource path="res://assets/GUIElements/Title_Screen.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/pixel font-7.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/GUIElements/Pause_Menu_Buttons.png" type="Texture" id=10]
@@ -15,23 +9,76 @@
 [ext_resource path="res://resources/styles/NoBorder.tres" type="StyleBox" id=13]
 [ext_resource path="res://assets/fonts/Harker-rpwy.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://assets/GUIElements/Dither.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/MusicController.gd" type="Script" id=17]
 
-[sub_resource type="AnimatedTexture" id=1]
-frames = 7
-fps = 12.0
-frame_0/texture = ExtResource( 2 )
-frame_1/texture = ExtResource( 5 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 4 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 6 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 7 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 1 )
-frame_5/delay_sec = 0.0
-frame_6/texture = ExtResource( 3 )
-frame_6/delay_sec = 0.0
+[sub_resource type="AtlasTexture" id=169]
+atlas = ExtResource( 1 )
+region = Rect2( 2592, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=170]
+atlas = ExtResource( 1 )
+region = Rect2( 2160, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=171]
+atlas = ExtResource( 1 )
+region = Rect2( 1728, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=172]
+atlas = ExtResource( 1 )
+region = Rect2( 1296, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=173]
+atlas = ExtResource( 1 )
+region = Rect2( 864, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=174]
+atlas = ExtResource( 1 )
+region = Rect2( 432, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=175]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=160]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=161]
+atlas = ExtResource( 1 )
+region = Rect2( 432, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=162]
+atlas = ExtResource( 1 )
+region = Rect2( 864, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=163]
+atlas = ExtResource( 1 )
+region = Rect2( 1296, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=164]
+atlas = ExtResource( 1 )
+region = Rect2( 1728, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=165]
+atlas = ExtResource( 1 )
+region = Rect2( 2160, 0, 432, 240 )
+
+[sub_resource type="AtlasTexture" id=166]
+atlas = ExtResource( 1 )
+region = Rect2( 2592, 0, 432, 240 )
+
+[sub_resource type="SpriteFrames" id=167]
+animations = [ {
+"frames": [ SubResource( 169 ), SubResource( 170 ), SubResource( 171 ), SubResource( 172 ), SubResource( 173 ), SubResource( 174 ), SubResource( 175 ) ],
+"loop": false,
+"name": "turn_back",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 160 ), SubResource( 161 ), SubResource( 162 ), SubResource( 163 ), SubResource( 164 ), SubResource( 165 ), SubResource( 166 ) ],
+"loop": false,
+"name": "turn_page",
+"speed": 12.0
+} ]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 8 )
@@ -614,7 +661,7 @@ animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ), SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 7.0
 } ]
 
 [sub_resource type="DynamicFont" id=147]
@@ -659,37 +706,71 @@ font_data = ExtResource( 14 )
 size = 12
 font_data = ExtResource( 9 )
 
+[sub_resource type="DynamicFont" id=158]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=159]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=168]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=176]
+size = 24
+outline_size = 1
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=177]
+size = 24
+outline_size = 1
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=178]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=179]
+font_data = ExtResource( 9 )
+
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -10.0
+margin_bottom = -10.0
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 432.0
-margin_bottom = 240.0
-texture = SubResource( 1 )
+[node name="Book" type="AnimatedSprite" parent="."]
+position = Vector2( 216, 119 )
+frames = SubResource( 167 )
+animation = "turn_back"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 17 )
+
+[node name="menu_page" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="menu_page"]
 position = Vector2( 312, 88 )
 frames = SubResource( 146 )
-frame = 35
+frame = 71
 playing = true
 
-[node name="Play" type="Button" parent="."]
+[node name="Play" type="Button" parent="menu_page"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 35.0
-margin_top = 24.0
-margin_right = 166.0
-margin_bottom = 46.0
+margin_left = 220.0
+margin_top = 124.0
+margin_right = 351.0
+margin_bottom = 146.0
 custom_styles/focus = ExtResource( 13 )
 custom_fonts/font = SubResource( 147 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
@@ -701,35 +782,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Button" parent="."]
+[node name="Options" type="Button" parent="menu_page"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 35.0
-margin_top = 50.0
-margin_right = 166.0
-margin_bottom = 72.0
+margin_left = 220.0
+margin_top = 150.0
+margin_right = 374.0
+margin_bottom = 172.0
 custom_styles/focus = ExtResource( 13 )
 custom_fonts/font = SubResource( 148 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 custom_colors/font_color_hover = Color( 0.211765, 0.211765, 0.211765, 1 )
-text = "Options"
+text = "Options and Credits"
 flat = true
 align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="."]
+[node name="Quit" type="Button" parent="menu_page"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 35.0
-margin_top = 75.0
-margin_right = 166.0
-margin_bottom = 97.0
+margin_left = 220.0
+margin_top = 175.0
+margin_right = 351.0
+margin_bottom = 197.0
 custom_styles/focus = ExtResource( 13 )
 custom_fonts/font = SubResource( 149 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
@@ -741,35 +822,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left" type="TextureRect" parent="."]
+[node name="Left" type="TextureRect" parent="menu_page"]
 margin_left = 47.0
 margin_top = 179.0
 margin_right = 59.0
 margin_bottom = 191.0
 texture = ExtResource( 11 )
 
-[node name="Right" type="TextureRect" parent="."]
+[node name="Right" type="TextureRect" parent="menu_page"]
 margin_left = 73.0
 margin_top = 179.0
 margin_right = 85.0
 margin_bottom = 191.0
 texture = SubResource( 150 )
 
-[node name="Up" type="TextureRect" parent="."]
+[node name="Up" type="TextureRect" parent="menu_page"]
 margin_left = 60.0
 margin_top = 166.0
 margin_right = 72.0
 margin_bottom = 178.0
 texture = SubResource( 151 )
 
-[node name="Down" type="TextureRect" parent="."]
+[node name="Down" type="TextureRect" parent="menu_page"]
 margin_left = 60.0
 margin_top = 179.0
 margin_right = 72.0
 margin_bottom = 191.0
 texture = SubResource( 152 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="menu_page"]
 margin_left = 47.6071
 margin_top = 190.528
 margin_right = 87.6071
@@ -778,7 +859,7 @@ custom_fonts/font = SubResource( 153 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Move"
 
-[node name="Z" type="TextureRect" parent="."]
+[node name="Z" type="TextureRect" parent="menu_page"]
 margin_left = 117.0
 margin_top = 179.0
 margin_right = 129.0
@@ -788,7 +869,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="menu_page"]
 margin_left = 99.2295
 margin_top = 191.825
 margin_right = 145.23
@@ -797,7 +878,7 @@ custom_fonts/font = SubResource( 153 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Attack"
 
-[node name="X" type="TextureRect" parent="."]
+[node name="X" type="TextureRect" parent="menu_page"]
 margin_left = 170.0
 margin_top = 179.0
 margin_right = 182.0
@@ -807,7 +888,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="menu_page"]
 margin_left = 160.622
 margin_top = 192.0
 margin_right = 206.622
@@ -816,14 +897,14 @@ custom_fonts/font = SubResource( 153 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "Item"
 
-[node name="TextureRect3" type="TextureRect" parent="."]
+[node name="TextureRect3" type="TextureRect" parent="menu_page"]
 margin_left = 232.25
 margin_top = 48.0
 margin_right = 392.25
 margin_bottom = 128.0
 texture = ExtResource( 15 )
 
-[node name="Label4" type="Label" parent="."]
+[node name="Label4" type="Label" parent="menu_page"]
 margin_left = 46.25
 margin_top = 37.0
 margin_right = 191.25
@@ -835,7 +916,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Story" type="Label" parent="."]
+[node name="Story" type="Label" parent="menu_page"]
 margin_left = 45.0
 margin_top = 80.0
 margin_right = 191.0
@@ -847,12 +928,145 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="mouse_entered" from="Play" to="." method="_on_Play_mouse_entered"]
-[connection signal="mouse_exited" from="Play" to="." method="_on_Play_mouse_exited"]
-[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
-[connection signal="mouse_entered" from="Options" to="." method="_on_Options_mouse_entered"]
-[connection signal="mouse_exited" from="Options" to="." method="_on_Options_mouse_exited"]
-[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
-[connection signal="mouse_entered" from="Quit" to="." method="_on_Quit_mouse_entered"]
-[connection signal="mouse_exited" from="Quit" to="." method="_on_Quit_mouse_exited"]
-[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+
+[node name="options_page" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicSlider" type="HSlider" parent="options_page"]
+margin_left = 234.0
+margin_top = 110.0
+margin_right = 395.0
+margin_bottom = 126.0
+value = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="options_page"]
+margin_left = 234.0
+margin_top = 94.0
+margin_right = 326.0
+margin_bottom = 110.0
+custom_fonts/font = SubResource( 158 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+text = "Music Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicValue" type="Label" parent="options_page"]
+margin_left = 355.0
+margin_top = 94.0
+margin_right = 395.0
+margin_bottom = 110.0
+custom_fonts/font = SubResource( 159 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+align = 2
+
+[node name="SFXSlider" type="HSlider" parent="options_page"]
+margin_left = 234.0
+margin_top = 149.0
+margin_right = 395.0
+margin_bottom = 165.0
+value = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="options_page"]
+margin_left = 234.0
+margin_top = 133.0
+margin_right = 326.0
+margin_bottom = 149.0
+custom_fonts/font = SubResource( 158 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+text = "SFX Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXValue" type="Label" parent="options_page"]
+margin_left = 355.0
+margin_top = 133.0
+margin_right = 395.0
+margin_bottom = 149.0
+custom_fonts/font = SubResource( 159 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+align = 2
+
+[node name="Return" type="Button" parent="options_page"]
+margin_left = 232.0
+margin_top = 188.0
+margin_right = 386.0
+margin_bottom = 210.0
+custom_styles/focus = ExtResource( 13 )
+custom_fonts/font = SubResource( 168 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+custom_colors/font_color_hover = Color( 0.211765, 0.211765, 0.211765, 1 )
+text = "Return"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="options_page"]
+margin_left = 233.0
+margin_top = 47.0
+margin_right = 310.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 176 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+text = "Options"
+
+[node name="Label4" type="Label" parent="options_page"]
+margin_left = 45.0
+margin_top = 47.0
+margin_right = 122.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 177 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="options_page"]
+margin_left = 46.0
+margin_top = 71.0
+margin_right = 190.0
+margin_bottom = 200.0
+custom_fonts/mono_font = SubResource( 178 )
+custom_fonts/normal_font = SubResource( 179 )
+custom_colors/default_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+bbcode_enabled = true
+bbcode_text = "Created by:
+Maui Kelley and Mehrabi Hasan
+
+Music by: 
+Benjamin Burnes (Three Red Hearts: Prepare to Dev Edition) - [color=#15859f][url=http://www.abstractionmusic.com/]Ben's Homepage[/url][/color]"
+text = "Created by:
+Maui Kelley and Mehrabi Hasan
+
+Music by: 
+Benjamin Burnes (Three Red Hearts: Prepare to Dev Edition) - Ben's Homepage"
+[connection signal="animation_finished" from="Book" to="." method="_on_Book_animation_finished"]
+[connection signal="mouse_entered" from="menu_page/Play" to="." method="_on_Play_mouse_entered"]
+[connection signal="mouse_exited" from="menu_page/Play" to="." method="_on_Play_mouse_exited"]
+[connection signal="pressed" from="menu_page/Play" to="." method="_on_Play_pressed"]
+[connection signal="mouse_entered" from="menu_page/Options" to="." method="_on_Options_mouse_entered"]
+[connection signal="mouse_exited" from="menu_page/Options" to="." method="_on_Options_mouse_exited"]
+[connection signal="pressed" from="menu_page/Options" to="." method="_on_Options_pressed"]
+[connection signal="mouse_entered" from="menu_page/Quit" to="." method="_on_Quit_mouse_entered"]
+[connection signal="mouse_exited" from="menu_page/Quit" to="." method="_on_Quit_mouse_exited"]
+[connection signal="pressed" from="menu_page/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="value_changed" from="options_page/MusicSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="options_page/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="mouse_entered" from="options_page/Return" to="." method="_on_Return_mouse_entered"]
+[connection signal="mouse_exited" from="options_page/Return" to="." method="_on_Return_mouse_exited"]
+[connection signal="pressed" from="options_page/Return" to="." method="_on_Return_pressed"]

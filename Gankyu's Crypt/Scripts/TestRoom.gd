@@ -3,12 +3,18 @@ extends Node
 onready var player = get_node("Player")
 const CLIFF_COLLISION_BIT = 2
 var num_off = 0
+onready var packedMenu = load("res://Scenes/Menu.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for path in get_tree().get_nodes_in_group("Path"):
 		path.connect("TurnOffCliffs", self, "turn_off_cliffs")
 		path.connect("TurnOnCliffs", self, "turn_on_cliffs")
+
+func _process(delta):
+	if Input.is_action_just_pressed("pause"):
+		GlobalVariables.paused = true
+		get_node("CanvasLayer").add_child(packedMenu.instance())
 
 func turn_off_cliffs():
 	print("turnoff")

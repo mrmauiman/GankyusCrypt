@@ -4,6 +4,8 @@ export(float) var spin_speed = 30
 export(Vector2) var velocity = Vector2.DOWN * 50
 
 func _physics_process(delta):
+	if GlobalVariables.paused:
+		return
 	if $HitBox.is_in_group("stunner"):
 		rotation_degrees += rad2deg(spin_speed * delta)
 	position += velocity * delta
