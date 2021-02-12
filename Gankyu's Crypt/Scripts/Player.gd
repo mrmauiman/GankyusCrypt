@@ -235,6 +235,22 @@ func take_knockback(amount):
 
 func _on_Hurtbox_area_entered(area):
 	if area.is_in_group("enemy_hitbox"):
+		if area.is_in_group("blockable") and state != states.ATTACK:
+			var diff = area.global_position - global_position
+			var temp_dir
+			if diff.x > diff.y:
+				if diff.x > 0:
+					temp_dir = directions.RIGHT
+				else:
+					temp_dir = directions.LEFT
+			else:
+				if diff.y > 0:
+					temp_dir = directions.DOWN
+				else:
+					temp_dir = directions.UP
+			if direction == temp_dir:
+				area.get_parent().queue_free()
+				return
 		take_damage(area.damage)
 		take_knockback(area.knockback)
 		if area.is_in_group("projectile"):

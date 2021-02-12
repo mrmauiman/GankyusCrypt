@@ -5,6 +5,7 @@ export(types) var type
 
 export(NodePath) var camera_path
 var camera
+export(NodePath) var blackout_path
 
 var type_to_frame_map = {types.PUZZLE: 2, types.COMBAT: 1}
 
@@ -23,4 +24,7 @@ func open():
 func _on_Timer_timeout():
 	camera.set_offset(Vector2.ZERO, true)
 	GlobalVariables.paused = false
+	if blackout_path != "":
+		print(blackout_path)
+		get_node(blackout_path).queue_free()
 	queue_free()

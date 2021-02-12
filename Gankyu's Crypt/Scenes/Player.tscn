@@ -98,7 +98,6 @@ GameOver = ExtResource( 7 )
 material = ExtResource( 5 )
 frames = ExtResource( 2 )
 animation = "death"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

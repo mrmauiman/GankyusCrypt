@@ -9,7 +9,7 @@ func _on_Options_pressed():
 	pass # Replace with function body.
 
 func _on_Quit_pressed():
-	get_tree().quit
+	get_tree().quit()
 
 func add_outline(node):
 	var font = node.get("custom_fonts/font")
