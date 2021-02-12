@@ -394,7 +394,7 @@ type = 2
 start_direction = 180
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2360, -384 )
+position = Vector2( 216, 192 )
 GUI_path = NodePath("../CanvasLayer/GUI")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -1019,7 +1019,6 @@ position = Vector2( 2464, -592 )
 position = Vector2( 2256, -592 )
 
 [node name="RoomBlackouts" type="Node2D" parent="."]
-visible = false
 position = Vector2( 80, -624 )
 z_index = 30
 
